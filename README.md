@@ -5,6 +5,8 @@ A lightweight web app for tracking job applications and how each one is going. I
 ## Features
 
 - **Track every application** with company, role, job posting link, status, date applied, location, work type, salary range, source, contact, follow-up date, priority, and notes.
+- **Link the resume you used** for each application, with a label like "CSM Resume v3" and a link to the file.
+- **Paste the full job description** into each application so you still have it after the posting is taken down. It is searchable and can be copied from the Details view.
 - **Nine pipeline stages**: Saved, Applied, Phone Screen, Interviewing, Offer, Accepted, Rejected, Withdrawn, and Ghosted.
 - **Status history** is recorded automatically every time an application moves stages, so you can see exactly how each one progressed.
 - **Dashboard** with total and active counts, response rate, interview count, offers, and follow-ups that are due or overdue.
@@ -36,7 +38,7 @@ This repository includes a workflow that publishes the app to GitHub Pages on ev
 
 ## Using the App
 
-1. Click **Add Application** (or press `n`) and fill in the details. Only company and role are required.
+1. Click **Add Application** (or press `n`) and fill in the details. Only company and role are required. Paste the job posting into the **Job Description** box to keep a copy, and add the resume you used under **Resume Used** and **Resume Link**.
 2. Change an application's status straight from its card using the dropdown. The change is added to its history.
 3. Click **Details** to see the full record, including status history, or **Edit** to update anything.
 4. Set a **Next Follow-Up** date and the dashboard will flag it when it is due or overdue.
@@ -65,9 +67,12 @@ Exports look like this. Only `company` and `role` are required when importing; e
       "source": "LinkedIn",
       "contactName": "Jordan Lee",
       "contactEmail": "jordan.lee@example.com",
+      "resumeName": "CSM Resume v3",
+      "resumeLink": "https://drive.google.com/file/d/example",
       "followUpDate": "2026-09-24",
       "priority": "High",
       "notes": "Second round on Thursday.",
+      "description": "Full text of the job posting, pasted in.",
       "createdAt": "2026-09-02T14:10:00.000Z",
       "updatedAt": "2026-09-18T09:30:00.000Z",
       "history": [

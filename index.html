@@ -146,6 +146,14 @@
             <input name="contactEmail" type="email" placeholder="name@company.com">
           </label>
           <label class="field">
+            <span class="field__label">Resume Used</span>
+            <input name="resumeName" type="text" placeholder="e.g. CSM Resume v3">
+          </label>
+          <label class="field">
+            <span class="field__label">Resume Link</span>
+            <input name="resumeLink" type="url" placeholder="Google Drive, Dropbox, or other link">
+          </label>
+          <label class="field">
             <span class="field__label">Next Follow-Up</span>
             <input name="followUpDate" type="date">
           </label>
@@ -161,6 +169,13 @@
             <span class="field__label">Notes</span>
             <textarea name="notes" rows="4" placeholder="Interview prep, who you spoke with, what happens next..."></textarea>
           </label>
+          <div class="field field--full">
+            <div class="field__row">
+              <label class="field__label" for="form-description">Job Description</label>
+              <span class="muted" id="description-count"></span>
+            </div>
+            <textarea name="description" id="form-description" rows="8" placeholder="Paste the full job description here so you have it even after the posting comes down."></textarea>
+          </div>
         </div>
         <p class="form-error" id="form-error" hidden></p>
       </div>
@@ -228,6 +243,7 @@
         </label>
         <div class="card__actions">
           <a class="btn btn--small btn--ghost card__link" target="_blank" rel="noopener noreferrer">Open Posting</a>
+          <a class="btn btn--small btn--ghost card__resume" target="_blank" rel="noopener noreferrer">Resume</a>
           <button class="btn btn--small btn--ghost card__view" type="button">Details</button>
           <button class="btn btn--small btn--ghost card__edit" type="button">Edit</button>
         </div>

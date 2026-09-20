@@ -32,7 +32,7 @@
   // Fields that can be edited in the form and are carried through import/export.
   const TEXT_FIELDS = [
     'company', 'role', 'link', 'location', 'workType', 'salary', 'source',
-    'contactName', 'contactEmail', 'notes',
+    'contactName', 'contactEmail', 'resumeName', 'resumeLink', 'notes', 'description',
   ];
   const DATE_FIELDS = ['dateApplied', 'followUpDate'];
 
@@ -138,9 +138,12 @@
       source: str(raw.source),
       contactName: str(raw.contactName ?? raw.contact),
       contactEmail: str(raw.contactEmail),
+      resumeName: str(raw.resumeName ?? raw.resume),
+      resumeLink: str(raw.resumeLink ?? raw.resumeUrl),
       followUpDate: isISODate(raw.followUpDate) ? raw.followUpDate : '',
       priority: PRIORITIES.includes(raw.priority) ? raw.priority : 'Medium',
       notes: str(raw.notes),
+      description: str(raw.description ?? raw.jobDescription),
       createdAt: validTimestamp(raw.createdAt) || now,
       updatedAt: validTimestamp(raw.updatedAt) || now,
       history: [],
@@ -230,7 +233,7 @@
       if (ui.status && a.status !== ui.status) return false;
       if (ui.activeOnly && !STATUS_BY_KEY[a.status].active) return false;
       if (!q) return true;
-      const hay = [a.company, a.role, a.location, a.notes, a.source, a.contactName, a.salary].join(' ').toLowerCase();
+      const hay = [a.company, a.role, a.location, a.notes, a.source, a.contactName, a.salary, a.description, a.resumeName].join(' ').toLowerCase();
       return hay.includes(q);
     });
 
@@ -376,6 +379,8 @@
       if (a.salary) meta.push(`<span>${escapeHtml(a.salary)}</span>`);
       if (a.source) meta.push(`<span>via ${escapeHtml(a.source)}</span>`);
       if (a.contactName) meta.push(`<span>Contact: ${escapeHtml(a.contactName)}</span>`);
+      if (a.resumeName) meta.push(`<span>Resume: ${escapeHtml(a.resumeName)}</span>`);
+      if (a.description) meta.push(`<span class="card__desc-flag" title="Job description saved">Description saved</span>`);
       $('.card__meta', node).innerHTML = meta.join('');
       $('.card__notes', node).textContent = a.notes;
 
@@ -386,6 +391,9 @@
       const link = $('.card__link', node);
       const href = safeUrl(a.link);
       if (href) link.href = href; else link.hidden = true;
+      const resume = $('.card__resume', node);
+      const resumeHref = safeUrl(a.resumeLink);
+      if (resumeHref) { resume.href = resumeHref; if (a.resumeName) resume.title = a.resumeName; } else resume.hidden = true;
 
       frag.appendChild(node);
     }
@@ -412,6 +420,7 @@
       form.elements[f].value = app ? app[f] : '';
     }
     if (!app) form.elements.dateApplied.value = todayISO();
+    updateDescriptionCount();
     formDialog.showModal();
     form.elements.company.focus();
   }
@@ -428,6 +437,7 @@
     if (!data.company) errors.push('Company is required.');
     if (!data.role) errors.push('Role is required.');
     if (data.link && !safeUrl(data.link)) errors.push('The job link needs to start with http:// or https://.');
+    if (data.resumeLink && !safeUrl(data.resumeLink)) errors.push('The resume link needs to start with http:// or https://.');
     if (data.contactEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.contactEmail)) errors.push('That contact email does not look valid.');
     for (const f of DATE_FIELDS) if (data[f] && !isISODate(data[f])) errors.push('Dates must be valid.');
     if (errors.length) {
@@ -445,6 +455,13 @@
     toast(wasNew ? `Added ${rec.company}.` : `Updated ${rec.company}.`);
   });
 
+  function updateDescriptionCount() {
+    const n = form.elements.description.value.length;
+    const words = form.elements.description.value.trim() ? form.elements.description.value.trim().split(/\s+/).length : 0;
+    $('#description-count').textContent = n ? `${words} word${words === 1 ? '' : 's'}` : '';
+  }
+  form.elements.description.addEventListener('input', updateDescriptionCount);
+
   $('#btn-add').addEventListener('click', () => openForm(null));
   $('#btn-close-form').addEventListener('click', () => formDialog.close());
   $('#btn-cancel-form').addEventListener('click', () => formDialog.close());
@@ -461,6 +478,7 @@
     $('#detail-title').textContent = `${a.role} at ${a.company}`;
     const status = STATUS_BY_KEY[a.status];
     const href = safeUrl(a.link);
+    const resumeHref = safeUrl(a.resumeLink);
     const item = (label, value) => value ? `<div class="detail__item"><span class="detail__label">${label}</span><span class="detail__value">${value}</span></div>` : '';
     const today = todayISO();
 
@@ -476,10 +494,18 @@
           ${item('Salary Range', escapeHtml(a.salary))}
           ${item('Source', escapeHtml(a.source))}
           ${item('Contact', escapeHtml(a.contactName) + (a.contactEmail ? ` <a href="mailto:${escapeHtml(a.contactEmail)}">${escapeHtml(a.contactEmail)}</a>` : ''))}
+          ${item('Resume Used', resumeHref
+            ? `<a href="${escapeHtml(resumeHref)}" target="_blank" rel="noopener noreferrer">${escapeHtml(a.resumeName || hostname(resumeHref) || 'Open resume')}</a>`
+            : escapeHtml(a.resumeName))}
           ${item('Next Follow-Up', escapeHtml(formatDate(a.followUpDate)))}
           ${item('Last Updated', escapeHtml(formatDateTime(a.updatedAt)))}
         </div>
         ${a.notes ? `<div><div class="detail__label">Notes</div><div class="detail__notes">${escapeHtml(a.notes)}</div></div>` : ''}
+        ${a.description ? `<div>
+          <div class="detail__section-head"><span class="detail__label">Job Description</span>
+            <button type="button" class="btn btn--ghost btn--small" id="btn-copy-description">Copy</button></div>
+          <div class="detail__notes detail__description">${escapeHtml(a.description)}</div>
+        </div>` : ''}
         <div>
           <div class="detail__label" style="margin-bottom:6px">Status History</div>
           <ul class="history">
@@ -491,6 +517,15 @@
         </div>
       </div>`;
     detailDialog.showModal();
+    const copyBtn = $('#btn-copy-description');
+    if (copyBtn) copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(a.description);
+        toast('Job description copied.');
+      } catch {
+        toast('Could not copy. Select the text and copy it manually.', true);
+      }
+    });
   }
 
   $('#btn-close-detail').addEventListener('click', () => detailDialog.close());
@@ -576,7 +611,7 @@
 
   function exportCSV() {
     if (apps.length === 0) { toast('There is nothing to export yet.', true); return; }
-    const cols = ['company', 'role', 'status', 'dateApplied', 'followUpDate', 'location', 'workType', 'salary', 'source', 'contactName', 'contactEmail', 'priority', 'link', 'notes', 'createdAt', 'updatedAt'];
+    const cols = ['company', 'role', 'status', 'dateApplied', 'followUpDate', 'location', 'workType', 'salary', 'source', 'contactName', 'contactEmail', 'resumeName', 'resumeLink', 'priority', 'link', 'notes', 'description', 'createdAt', 'updatedAt'];
     const cell = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
     const lines = [cols.join(',')];
     for (const a of apps) lines.push(cols.map(c => cell(a[c])).join(','));

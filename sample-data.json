@@ -22,10 +22,22 @@
       "createdAt": "2026-09-02T14:10:00.000Z",
       "updatedAt": "2026-09-18T09:30:00.000Z",
       "history": [
-        { "status": "Applied", "at": "2026-09-02T14:10:00.000Z" },
-        { "status": "Phone Screen", "at": "2026-09-09T16:00:00.000Z" },
-        { "status": "Interviewing", "at": "2026-09-18T09:30:00.000Z" }
-      ]
+        {
+          "status": "Applied",
+          "at": "2026-09-02T14:10:00.000Z"
+        },
+        {
+          "status": "Phone Screen",
+          "at": "2026-09-09T16:00:00.000Z"
+        },
+        {
+          "status": "Interviewing",
+          "at": "2026-09-18T09:30:00.000Z"
+        }
+      ],
+      "description": "Customer Success Manager\n\nAbout the role:\nYou will own a portfolio of mid-market accounts, drive adoption and renewals, and partner with Sales on expansion.\n\nWhat you will do:\n- Lead onboarding and quarterly business reviews\n- Track account health and act on risk signals\n- Coordinate with Support and Product on escalations\n\nWhat we are looking for:\n- 3+ years in Customer Success or Account Management for a SaaS product\n- Comfortable with CRM tools and usage data\n- Clear written and verbal communication",
+      "resumeName": "CSM Resume v3",
+      "resumeLink": "https://example.com/resume-csm-v3.pdf"
     },
     {
       "id": "sample-2",
@@ -46,8 +58,14 @@
       "createdAt": "2026-09-15T18:45:00.000Z",
       "updatedAt": "2026-09-15T18:45:00.000Z",
       "history": [
-        { "status": "Applied", "at": "2026-09-15T18:45:00.000Z" }
-      ]
+        {
+          "status": "Applied",
+          "at": "2026-09-15T18:45:00.000Z"
+        }
+      ],
+      "description": "",
+      "resumeName": "Senior CSM Resume",
+      "resumeLink": ""
     },
     {
       "id": "sample-3",
@@ -68,9 +86,18 @@
       "createdAt": "2026-09-08T13:00:00.000Z",
       "updatedAt": "2026-09-12T20:15:00.000Z",
       "history": [
-        { "status": "Applied", "at": "2026-09-08T13:00:00.000Z" },
-        { "status": "Phone Screen", "at": "2026-09-12T20:15:00.000Z" }
-      ]
+        {
+          "status": "Applied",
+          "at": "2026-09-08T13:00:00.000Z"
+        },
+        {
+          "status": "Phone Screen",
+          "at": "2026-09-12T20:15:00.000Z"
+        }
+      ],
+      "description": "",
+      "resumeName": "",
+      "resumeLink": ""
     },
     {
       "id": "sample-4",
@@ -91,9 +118,18 @@
       "createdAt": "2026-08-20T10:00:00.000Z",
       "updatedAt": "2026-09-05T08:20:00.000Z",
       "history": [
-        { "status": "Applied", "at": "2026-08-20T10:00:00.000Z" },
-        { "status": "Rejected", "at": "2026-09-05T08:20:00.000Z" }
-      ]
+        {
+          "status": "Applied",
+          "at": "2026-08-20T10:00:00.000Z"
+        },
+        {
+          "status": "Rejected",
+          "at": "2026-09-05T08:20:00.000Z"
+        }
+      ],
+      "description": "",
+      "resumeName": "",
+      "resumeLink": ""
     },
     {
       "id": "sample-5",
@@ -114,8 +150,14 @@
       "createdAt": "2026-09-17T21:00:00.000Z",
       "updatedAt": "2026-09-17T21:00:00.000Z",
       "history": [
-        { "status": "Saved", "at": "2026-09-17T21:00:00.000Z" }
-      ]
+        {
+          "status": "Saved",
+          "at": "2026-09-17T21:00:00.000Z"
+        }
+      ],
+      "description": "",
+      "resumeName": "",
+      "resumeLink": ""
     },
     {
       "id": "sample-6",
@@ -136,9 +178,18 @@
       "createdAt": "2026-08-05T12:00:00.000Z",
       "updatedAt": "2026-09-10T12:00:00.000Z",
       "history": [
-        { "status": "Applied", "at": "2026-08-05T12:00:00.000Z" },
-        { "status": "Ghosted", "at": "2026-09-10T12:00:00.000Z" }
-      ]
+        {
+          "status": "Applied",
+          "at": "2026-08-05T12:00:00.000Z"
+        },
+        {
+          "status": "Ghosted",
+          "at": "2026-09-10T12:00:00.000Z"
+        }
+      ],
+      "description": "",
+      "resumeName": "",
+      "resumeLink": ""
     }
   ]
 }

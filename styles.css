@@ -206,6 +206,8 @@ a { color: var(--brand); }
 .field--full { grid-column: 1 / -1; }
 .field--compact select { padding: 6px 8px; font-size: 0.85rem; }
 .field__label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }
+.field__row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.field__row .muted { font-size: 0.75rem; }
 .req { color: var(--danger); }
 input[type="text"], input[type="url"], input[type="email"], input[type="date"], input[type="search"], select, textarea {
   font: inherit;
@@ -257,7 +259,7 @@ textarea { resize: vertical; }
 .card__side { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; flex-shrink: 0; }
 .card__side .field { width: 160px; }
 .card__actions { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-.card__link[hidden] { display: none; }
+.card__link[hidden], .card__resume[hidden] { display: none; }
 
 .badge {
   display: inline-block;
@@ -318,6 +320,10 @@ textarea { resize: vertical; }
 .detail__label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 600; }
 .detail__value { font-size: 0.95rem; word-break: break-word; }
 .detail__notes { white-space: pre-wrap; background: var(--surface-2); padding: 12px; border-radius: var(--radius-sm); font-size: 0.92rem; }
+.detail__description { max-height: 320px; overflow-y: auto; border: 1px solid var(--border); }
+.detail__section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; gap: 8px; }
+.detail__section-head .btn { padding: 4px 8px; }
+.card__desc-flag { color: var(--text-muted); }
 .history { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
 .history li { display: flex; gap: 10px; align-items: center; font-size: 0.88rem; }
 .history__dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
