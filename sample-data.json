@@ -1,0 +1,144 @@
+{
+  "app": "job-app-tracker",
+  "version": 1,
+  "exportedAt": "2026-09-20T12:00:00.000Z",
+  "applications": [
+    {
+      "id": "sample-1",
+      "company": "Northwind Software",
+      "role": "Customer Success Manager",
+      "link": "https://example.com/jobs/csm-northwind",
+      "status": "Interviewing",
+      "dateApplied": "2026-09-02",
+      "location": "Austin, TX",
+      "workType": "Hybrid",
+      "salary": "$95k to $110k",
+      "source": "LinkedIn",
+      "contactName": "Jordan Lee",
+      "contactEmail": "jordan.lee@example.com",
+      "followUpDate": "2026-09-24",
+      "priority": "High",
+      "notes": "Second round with the VP of Customer Success on Thursday. Prep a 30-60-90 plan and bring the renewal playbook example.",
+      "createdAt": "2026-09-02T14:10:00.000Z",
+      "updatedAt": "2026-09-18T09:30:00.000Z",
+      "history": [
+        { "status": "Applied", "at": "2026-09-02T14:10:00.000Z" },
+        { "status": "Phone Screen", "at": "2026-09-09T16:00:00.000Z" },
+        { "status": "Interviewing", "at": "2026-09-18T09:30:00.000Z" }
+      ]
+    },
+    {
+      "id": "sample-2",
+      "company": "Bluefin Analytics",
+      "role": "Senior Customer Success Manager",
+      "link": "https://example.com/jobs/senior-csm-bluefin",
+      "status": "Applied",
+      "dateApplied": "2026-09-15",
+      "location": "Remote",
+      "workType": "Remote",
+      "salary": "$110k to $130k",
+      "source": "Company Website",
+      "contactName": "",
+      "contactEmail": "",
+      "followUpDate": "2026-09-22",
+      "priority": "Medium",
+      "notes": "Applied through the careers page. Referral from a former coworker is pending.",
+      "createdAt": "2026-09-15T18:45:00.000Z",
+      "updatedAt": "2026-09-15T18:45:00.000Z",
+      "history": [
+        { "status": "Applied", "at": "2026-09-15T18:45:00.000Z" }
+      ]
+    },
+    {
+      "id": "sample-3",
+      "company": "Harbor Cloud",
+      "role": "Account Manager, Enterprise",
+      "link": "https://example.com/jobs/am-harbor",
+      "status": "Phone Screen",
+      "dateApplied": "2026-09-08",
+      "location": "Denver, CO",
+      "workType": "On-site",
+      "salary": "",
+      "source": "Recruiter",
+      "contactName": "Sam Rivera",
+      "contactEmail": "sam.rivera@example.com",
+      "followUpDate": "2026-09-19",
+      "priority": "Medium",
+      "notes": "Recruiter screen went well. Waiting on the hiring manager's calendar.",
+      "createdAt": "2026-09-08T13:00:00.000Z",
+      "updatedAt": "2026-09-12T20:15:00.000Z",
+      "history": [
+        { "status": "Applied", "at": "2026-09-08T13:00:00.000Z" },
+        { "status": "Phone Screen", "at": "2026-09-12T20:15:00.000Z" }
+      ]
+    },
+    {
+      "id": "sample-4",
+      "company": "Pinecrest Labs",
+      "role": "Customer Success Manager",
+      "link": "",
+      "status": "Rejected",
+      "dateApplied": "2026-08-20",
+      "location": "Remote",
+      "workType": "Remote",
+      "salary": "$85k to $95k",
+      "source": "Indeed",
+      "contactName": "",
+      "contactEmail": "",
+      "followUpDate": "",
+      "priority": "Low",
+      "notes": "Received a rejection email. They went with an internal candidate.",
+      "createdAt": "2026-08-20T10:00:00.000Z",
+      "updatedAt": "2026-09-05T08:20:00.000Z",
+      "history": [
+        { "status": "Applied", "at": "2026-08-20T10:00:00.000Z" },
+        { "status": "Rejected", "at": "2026-09-05T08:20:00.000Z" }
+      ]
+    },
+    {
+      "id": "sample-5",
+      "company": "Summit Health Tech",
+      "role": "Implementation Specialist",
+      "link": "https://example.com/jobs/implementation-summit",
+      "status": "Saved",
+      "dateApplied": "",
+      "location": "Chicago, IL",
+      "workType": "Hybrid",
+      "salary": "",
+      "source": "Glassdoor",
+      "contactName": "",
+      "contactEmail": "",
+      "followUpDate": "",
+      "priority": "Low",
+      "notes": "Interesting role, but the posting closes on the 30th. Decide by Friday.",
+      "createdAt": "2026-09-17T21:00:00.000Z",
+      "updatedAt": "2026-09-17T21:00:00.000Z",
+      "history": [
+        { "status": "Saved", "at": "2026-09-17T21:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "sample-6",
+      "company": "Meridian Systems",
+      "role": "Customer Success Manager, Mid-Market",
+      "link": "https://example.com/jobs/csm-meridian",
+      "status": "Ghosted",
+      "dateApplied": "2026-08-05",
+      "location": "Remote",
+      "workType": "Remote",
+      "salary": "",
+      "source": "LinkedIn",
+      "contactName": "",
+      "contactEmail": "",
+      "followUpDate": "",
+      "priority": "Low",
+      "notes": "Followed up twice with no response.",
+      "createdAt": "2026-08-05T12:00:00.000Z",
+      "updatedAt": "2026-09-10T12:00:00.000Z",
+      "history": [
+        { "status": "Applied", "at": "2026-08-05T12:00:00.000Z" },
+        { "status": "Ghosted", "at": "2026-09-10T12:00:00.000Z" }
+      ]
+    }
+  ]
+}
