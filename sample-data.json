@@ -44,7 +44,7 @@
       "company": "Bluefin Analytics",
       "role": "Senior Customer Success Manager",
       "link": "https://example.com/jobs/senior-csm-bluefin",
-      "status": "Applied",
+      "status": "Pre-Assessment Assigned",
       "dateApplied": "2026-09-15",
       "location": "Remote",
       "workType": "Remote",
@@ -54,13 +54,17 @@
       "contactEmail": "",
       "followUpDate": "2026-09-22",
       "priority": "Medium",
-      "notes": "Applied through the careers page. Referral from a former coworker is pending.",
+      "notes": "Applied through the careers page. Received a link to an online assessment (about 45 minutes) that is due by the 22nd.",
       "createdAt": "2026-09-15T18:45:00.000Z",
-      "updatedAt": "2026-09-15T18:45:00.000Z",
+      "updatedAt": "2026-09-18T15:20:00.000Z",
       "history": [
         {
           "status": "Applied",
           "at": "2026-09-15T18:45:00.000Z"
+        },
+        {
+          "status": "Pre-Assessment Assigned",
+          "at": "2026-09-18T15:20:00.000Z"
         }
       ],
       "description": "",

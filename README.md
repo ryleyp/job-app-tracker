@@ -7,7 +7,7 @@ A lightweight web app for tracking job applications and how each one is going. I
 - **Track every application** with company, role, job posting link, status, date applied, location, work type, salary range, source, contact, follow-up date, priority, and notes.
 - **Link the resume you used** for each application, with a label like "CSM Resume v3" and a link to the file.
 - **Paste the full job description** into each application so you still have it after the posting is taken down. It is searchable and can be copied from the Details view.
-- **Nine pipeline stages**: Saved, Applied, Phone Screen, Interviewing, Offer, Accepted, Rejected, Withdrawn, and Ghosted.
+- **Eleven pipeline stages**: Saved, Applied, Pre-Assessment Assigned, Pre-Assessment Completed, Phone Screen, Interviewing, Offer, Accepted, Rejected, Withdrawn, and Ghosted. The dashboard calls out any online pre-assessments still waiting on you.
 - **Status history** is recorded automatically every time an application moves stages, so you can see exactly how each one progressed.
 - **Dashboard** with total and active counts, response rate, interview count, offers, and follow-ups that are due or overdue.
 - **Pipeline chart** that doubles as a filter. Click a stage to show only those applications.
@@ -88,7 +88,7 @@ A bare JSON array of application objects also imports fine. The importer accepts
 
 | Field | Values |
 | --- | --- |
-| `status` | `Saved`, `Applied`, `Phone Screen`, `Interviewing`, `Offer`, `Accepted`, `Rejected`, `Withdrawn`, `Ghosted` |
+| `status` | `Saved`, `Applied`, `Pre-Assessment Assigned`, `Pre-Assessment Completed`, `Phone Screen`, `Interviewing`, `Offer`, `Accepted`, `Rejected`, `Withdrawn`, `Ghosted` |
 | `workType` | `Remote`, `Hybrid`, `On-site`, or empty |
 | `priority` | `High`, `Medium`, `Low` |
 | `dateApplied`, `followUpDate` | `YYYY-MM-DD` |

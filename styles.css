@@ -20,6 +20,8 @@
 
   --s-saved: #6b7c74;
   --s-applied: #2f80ed;
+  --s-assess: #d98c1f;
+  --s-assess-done: #0e9aa7;
   --s-screen: #8e44ad;
   --s-interview: #18af7c;
   --s-offer: #013324;
@@ -147,7 +149,7 @@ a { color: var(--brand); }
 /* Stats */
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 12px;
   margin-bottom: 24px;
 }
@@ -179,7 +181,7 @@ a { color: var(--brand); }
 .pipeline__bars { display: grid; gap: 8px; }
 .pbar {
   display: grid;
-  grid-template-columns: 120px 1fr 40px;
+  grid-template-columns: 190px 1fr 40px;
   align-items: center;
   gap: 10px;
   background: none;
@@ -257,7 +259,7 @@ textarea { resize: vertical; }
 }
 .card__notes:empty { display: none; }
 .card__side { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; flex-shrink: 0; }
-.card__side .field { width: 160px; }
+.card__side .field { width: 220px; }
 .card__actions { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
 .card__link[hidden], .card__resume[hidden] { display: none; }
 
@@ -346,7 +348,8 @@ textarea { resize: vertical; }
   .card__side .field { width: 100%; }
   .card__actions { justify-content: flex-start; }
   .grid, .detail__grid { grid-template-columns: 1fr; }
-  .pbar { grid-template-columns: 100px 1fr 32px; }
+  .pbar { grid-template-columns: 130px 1fr 32px; }
+  .pbar__label { font-size: 0.78rem; }
   .brand__subtitle { display: none; }
   .modal__body { max-height: 60vh; }
 }

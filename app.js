@@ -15,6 +15,8 @@
   const STATUSES = [
     { key: 'Saved',        label: 'Saved',        color: 'var(--s-saved)',     active: true,  responded: false },
     { key: 'Applied',      label: 'Applied',      color: 'var(--s-applied)',   active: true,  responded: false },
+    { key: 'Pre-Assessment Assigned',  label: 'Pre-Assessment Assigned',  color: 'var(--s-assess)',      active: true, responded: true },
+    { key: 'Pre-Assessment Completed', label: 'Pre-Assessment Completed', color: 'var(--s-assess-done)', active: true, responded: true },
     { key: 'Phone Screen', label: 'Phone Screen', color: 'var(--s-screen)',    active: true,  responded: true },
     { key: 'Interviewing', label: 'Interviewing', color: 'var(--s-interview)', active: true,  responded: true },
     { key: 'Offer',        label: 'Offer',        color: 'var(--s-offer)',     active: true,  responded: true },
@@ -164,8 +166,17 @@
   function validTimestamp(v) { return (typeof v === 'string' && !Number.isNaN(Date.parse(v))) ? v : ''; }
   function matchStatus(v) {
     if (typeof v !== 'string') return '';
-    const s = v.trim().toLowerCase();
-    return STATUS_KEYS.find(k => k.toLowerCase() === s) || '';
+    const norm = (x) => x.toLowerCase().replace(/[^a-z]/g, '');
+    const s = norm(v);
+    if (!s) return '';
+    const exact = STATUS_KEYS.find(k => norm(k) === s);
+    if (exact) return exact;
+    if (s.includes('assess')) {
+      return (s.includes('complete') || s.includes('done') || s.includes('submitted')) ? 'Pre-Assessment Completed' : 'Pre-Assessment Assigned';
+    }
+    if (s.includes('interview')) return 'Interviewing';
+    if (s.includes('screen')) return 'Phone Screen';
+    return '';
   }
 
   function loadApps() {
@@ -260,7 +271,7 @@
   function computeStats() {
     const today = todayISO();
     const counts = Object.fromEntries(STATUS_KEYS.map(k => [k, 0]));
-    let active = 0, responded = 0, submitted = 0, interviews = 0, offers = 0, due = 0, overdue = 0;
+    let active = 0, responded = 0, submitted = 0, interviews = 0, offers = 0, due = 0, overdue = 0, assessments = 0;
 
     for (const a of apps) {
       counts[a.status]++;
@@ -268,6 +279,7 @@
       if (s.active) active++;
       if (a.status !== 'Saved') submitted++;
       if (s.responded) responded++;
+      if (a.status === 'Pre-Assessment Assigned') assessments++;
       if (['Phone Screen', 'Interviewing', 'Offer', 'Accepted'].includes(a.status)) interviews++;
       if (['Offer', 'Accepted'].includes(a.status)) offers++;
       if (a.followUpDate && s.active) {
@@ -276,7 +288,7 @@
       }
     }
     const responseRate = submitted ? Math.round((responded / submitted) * 100) : 0;
-    return { counts, total: apps.length, active, submitted, responded, responseRate, interviews, offers, due, overdue };
+    return { counts, total: apps.length, active, submitted, responded, responseRate, interviews, offers, due, overdue, assessments };
   }
 
   // ---------- Rendering ----------
@@ -293,6 +305,7 @@
     const tiles = [
       { label: 'Total', value: s.total, hint: `${s.active} active` },
       { label: 'Response Rate', value: s.responseRate + '%', hint: `${s.responded} of ${s.submitted} submitted` },
+      { label: 'Assessments', value: s.assessments, hint: s.assessments ? 'Waiting on you to complete' : 'None outstanding', alert: s.assessments > 0 },
       { label: 'Interviews', value: s.interviews, hint: 'Screens, interviews, and offers' },
       { label: 'Offers', value: s.offers, hint: s.counts.Accepted ? `${s.counts.Accepted} accepted` : 'Including accepted' },
       { label: 'Follow-Ups', value: s.overdue + s.due, hint: followUpLabel, alert: s.overdue > 0 },
